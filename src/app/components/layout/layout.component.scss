@@ -1,0 +1,56 @@
+.left-end-icon {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav {
+  transition: width 0.3s ease;
+
+  .entry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav-content {
+  margin-top: 65px;
+  padding: 0rem 1rem;
+}
+
+.expanded {
+  width: 250px;
+}
+
+.lg-menu-icon {
+  @media screen and (max-width: 801px) {
+    display: none;
+  }
+}
+
+.arrow-button {
+  position: fixed;
+  z-index: 1;
+}
+
+.vertical-scroll {
+  margin-bottom: 80px;
+}
+
+.menu-arrow {
+  position: absolute !important;
+  right: 25px;
+  top: 8px;
+  margin-top: 75px;
+}
+
+.mat-drawer-container {
+  background-color: var(--custom-background-default-color) !important;
+}

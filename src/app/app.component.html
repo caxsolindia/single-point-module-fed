@@ -1,0 +1,6 @@
+<div *ngIf="isLoggedIn; else login" class="full-screen-wrapper">
+  <app-layout></app-layout>
+</div>
+<ng-template #login>
+  <app-login></app-login>
+</ng-template>

@@ -1,0 +1,226 @@
+query GetSummary($userId: String!) {
+  getSummary(userId: $userId) {
+    status
+    message
+    summary {
+      description
+    }
+  }
+}
+
+query GetProfileOverview($userId: String!) {
+  getProfileOverview(userId: $userId) {
+    status
+    message
+    profile {
+      userId
+      name
+      username
+      phone
+      address
+      gender
+      linkedinURL
+      employeeId
+      profilephoto
+      languages
+      managerName
+    }
+  }
+}
+
+query GetLanguages {
+  getLanguages {
+    status
+    message
+    data {
+      name
+      Title
+      ID
+    }
+  }
+}
+
+query GetUserSkills($userId: String!) {
+  getUserSkills(userId: $userId) {
+    status
+    message
+    data {
+      userId
+      skillId
+      skillName
+      experienceInYears
+      skillCategory
+      proficiency
+    }
+  }
+}
+
+query GetPreviousCompany($userId: String!) {
+  getPreviousCompany(userId: $userId) {
+    status
+    message
+    companies {
+      id
+      companyName
+      designation
+      startDate
+      endDate
+      country
+      state
+      locationType
+      employmentType
+      jobSummary
+      skill
+    }
+  }
+}
+
+mutation UpdateLinkedinURL($username: String, $url: String) {
+  updateLinkedinURL(username: $username, url: $url) {
+    success
+    message
+  }
+}
+
+mutation UpdateLanguage($username: String, $language: String) {
+  updateLanguage(username: $username, language: $language) {
+    success
+    message
+  }
+}
+
+mutation UpdateContactNumber($username: String, $phone: String) {
+  updateContactNumber(username: $username, phone: $phone) {
+    success
+    message
+  }
+}
+
+mutation submitProfileData(
+  $username: String!
+  $language: String!
+  $url: String!
+  $phone: String!
+) {
+  updateLanguage(username: $username, language: $language) {
+    success
+    message
+  }
+  updateLinkedinURL(username: $username, url: $url) {
+    success
+    message
+  }
+  updateContactNumber(username: $username, phone: $phone) {
+    success
+    message
+  }
+}
+mutation UpdateSummary($username: String, $description: String) {
+  updateSummary(username: $username, description: $description) {
+    message
+    success
+  }
+}
+
+query GetUserProjects($userId: ID!) {
+  getUserProjects(userId: $userId) {
+    status
+    data {
+      userId
+      projectId
+      projectTitle
+      role
+      startDate
+      endDate
+      projectSummary
+      userSkills
+    }
+  }
+}
+
+query GetAllCertificates($userId: String!) {
+  getAllCertificates(userId: $userId) {
+    status
+    data {
+      certificateExpiryDate
+      certificateID
+      certificateImageURL
+      certificateIssueDate
+      certificateName
+      certificateURL
+      organizationName
+      skill
+    }
+    message
+  }
+}
+
+mutation AddUserSkill(
+  $userId: ID!
+  $userSkills: String!
+  $skillCategory: String!
+  $proficiency: String
+  $status: Boolean
+  $experienceInYears: String
+) {
+  addUserSkill(
+    userId: $userId
+    userSkills: $userSkills
+    skillCategory: $skillCategory
+    proficiency: $proficiency
+    status: $status
+    experienceInYears: $experienceInYears
+  ) {
+    data
+    status
+  }
+}
+
+mutation AddCertificateWithImage(
+  $certificateName: String!
+  $organizationName: String!
+  $CredentialUrl: String!
+  $certificateIssueDate: String!
+  $certificateExpiryDate: String!
+  $userId: String!
+  $skill: String!
+  $file: Upload
+) {
+  addCertificateWithImage(
+    certificateName: $certificateName
+    organizationName: $organizationName
+    certificateURL: $CredentialUrl
+    certificateIssueDate: $certificateIssueDate
+    certificateExpiryDate: $certificateExpiryDate
+    userId: $userId
+    skill: $skill
+    file: $file
+  ) {
+    status
+    data
+    message
+  }
+}
+mutation DeleteCertificate($certificateId: String!) {
+  deleteCertificate(certificateId: $certificateId) {
+    status
+    data
+    message
+  }
+}
+
+mutation DeleteUserSkill($userId: String!, $skillId: String!) {
+  deleteUserSkill(skillId: $skillId, userId: $userId) {
+    status
+    message
+    data
+  }
+}
+
+mutation DeleteUserProject($userId: String!, $projectId: String!) {
+  deleteUserProject(projectId: $projectId, userId: $userId) {
+    status
+    message
+    data
+  }
+}

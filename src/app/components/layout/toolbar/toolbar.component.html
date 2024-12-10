@@ -1,0 +1,136 @@
+<mat-toolbar color="primary bg-primary-colour">
+  <div class="left-section">
+    <!-- button show on sm screen -->
+    <button
+      mat-icon-button
+      aria-label="Menu icon"
+      class="sm-menu-icon"
+      (click)="toggleMenu()">
+      <mat-icon><img src="assets/images/menuWhite.svg" alt="notif" /></mat-icon>
+    </button>
+  </div>
+  <div class="middle-section">
+    <img src="assets/images/logo.svg" style="height: 35px" alt="notif" />
+  </div>
+  <div class="search-container lg-menu-icon">
+    <div class="search">
+      <img
+        class="search-icon material-icons"
+        src="assets/images/search.svg"
+        style="height: 35px"
+        (click)="toggleSearch(); sharedService.closeOverlay()"
+        [attr.tabindex]="null"
+        (keydown)="handleKeydown($event)"
+        alt="search-icon" />
+      <input
+        type="text"
+        (click)="toggleSearch(); sharedService.closeOverlay()"
+        [ngStyle]="{ width: isExpanded ? '300px' : '200px' }"
+        placeholder="Search anything here..."
+        name="search" />
+    </div>
+  </div>
+  <span class="spacer lg-menu-icon"></span>
+  <span class="right-end-icon">
+    <button
+      class="sm-menu-icon"
+      mat-icon-button
+      aria-label="Apps icon"
+      (click)="openSearchDrawer(); sharedService.closeOverlay()">
+      <img src="assets/images/searchWhite.svg" alt="search" />
+    </button>
+    <button
+      class="custom-hover-button"
+      mat-icon-button
+      aria-label="Apps icon"
+      aria-label="Notifications icon"
+      (click)="openNotificationsDrawer(); sharedService.closeOverlay()"
+      [appHover]="topItems[0]"
+      *ngIf="isNewNotif; else newNotif">
+      <img [src]="getIconPath(topItems[0])" alt="notif" />
+    </button>
+    <!--When dynamic notifications fetched, below bell icon can be used for unread-->
+    <ng-template #newNotif
+      ><button
+        class="custom-hover-button"
+        mat-icon-button
+        aria-label="Apps icon"
+        aria-label="Notifications icon"
+        (click)="openNotificationsDrawer(); sharedService.closeOverlay()"
+        [appHover]="topItems[1]">
+        <img [src]="getIconPath(topItems[1])" alt="notif" />
+      </button>
+    </ng-template>
+    <button
+      (click)="sharedService.closeOverlay()"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Apps icon"
+      class="custom-hover-button">
+      <img src="assets/images/profilePhoto.svg" alt="notif" />
+    </button>
+
+    <button
+      (click)="toggleOverlay($event)"
+      type="button"
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+      class="lg-menu-icon custom-hover-button"
+      mat-icon-button
+      aria-label="Apps icon"
+      [appHover]="topItems[2]"
+      [class.active]="isDrawerOpen">
+      <img [src]="getIconPath(topItems[2])" alt="notif" />
+    </button>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="sharedService.isOpen">
+      <mat-card class="example-card">
+        <div class="item-container">
+          <div
+            class="item"
+            *ngFor="let tile of tiles; let i = index"
+            [appHover]="tile"
+            class="tile-button secondary-colour"
+            [routerLink]="tile.routerLink"
+            routerLinkActive="active">
+            <mat-icon>
+              <img
+                [src]="getIconPathMenu(tile)"
+                style="height: 23px; width: 23px"
+                alt="{{ tile.label }}" />
+            </mat-icon>
+            <div
+              class="tile-label"
+              [style.color]="
+                tile.isHovered || tile.isClicked ? primaryColor : black
+              ">
+              {{ tile.label }}
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </ng-template>
+  </span>
+</mat-toolbar>
+<app-notifications [username]="userName"></app-notifications>
+<mat-menu #menu="matMenu" (closed)="resetStates()">
+  <button
+    *ngFor="let option of menuOptions; let i = index"
+    class="option-button"
+    mat-menu-item
+    (click)="option.action(); sharedService.setClicked(option, true)"
+    [appHover]="option">
+    <span class="flex-container">
+      <mat-icon
+        ><app-editable-svg
+          [fillColor]="
+            option.isHovered || option.isClicked ? primaryColor : black
+          "
+          [svgName]="option.svgName"></app-editable-svg
+      ></mat-icon>
+      <span class="body1">{{ option.label }}</span>
+    </span>
+  </button>
+</mat-menu>

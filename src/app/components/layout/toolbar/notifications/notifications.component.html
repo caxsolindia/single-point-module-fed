@@ -1,0 +1,93 @@
+<mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+  <div class="dialog-content">
+    <div class="flex-container">
+      <div class="headline4">{{ labels.NEW_NOTIFICATIONS }}</div>
+      <span class="spacer"></span>
+      <span class="right-end-icon">
+        <button
+          class="right-buttons"
+          aria-label="Apps icon"
+          [matMenuTriggerFor]="menu">
+          <img src="assets/images/more.svg" alt="notif" />
+        </button>
+        <mat-divider vertical class="divider headline5"></mat-divider>
+        <button class="right-buttons" (click)="closeDrawer()">
+          <app-editable-svg
+            [fillColor]="'black'"
+            [svgName]="'cancel'"></app-editable-svg>
+        </button>
+      </span>
+    </div>
+
+    <mat-tab-group>
+      <mat-tab label="All">
+        <ng-container
+          *ngTemplateOutlet="
+            notificationTemplate;
+            context: { filteredData: notifData }
+          "></ng-container>
+      </mat-tab>
+      <mat-tab label="Unread">
+        <ng-container
+          *ngTemplateOutlet="
+            notificationTemplate;
+            context: { filteredData: filterNotifications('unread') }
+          "></ng-container>
+      </mat-tab>
+      <mat-tab label="Mentions">
+        <ng-container
+          *ngTemplateOutlet="
+            notificationTemplate;
+            context: { filteredData: filterNotifications('MENTIONS') }
+          "></ng-container>
+      </mat-tab>
+      <mat-tab class="caption1" label="Organisations Annoucements">
+        <ng-container
+          *ngTemplateOutlet="
+            notificationTemplate;
+            context: { filteredData: filterNotifications('ORG') }
+          "></ng-container>
+      </mat-tab>
+    </mat-tab-group>
+
+    <ng-template #notificationTemplate let-filteredData>
+      <div class="headline5 notification-title major-label-colour content">
+        {{ labels.NEW_NOTIFICATIONS }}
+      </div>
+      <div class="notification-list" *ngFor="let notif of notifData">
+        <div class="notification bg-lighter-primary-colour">
+          <div class="notification-icon bg-light-primary-colour">
+            <app-editable-svg
+              [fillColor]="'#730BA6'"
+              [svgName]="'notif'"></app-editable-svg>
+          </div>
+          <div class="notification-desc major-label-colour">
+            <div class="notification-title major-label-colour">
+              {{ notif.title }} {{ username }}!
+            </div>
+            <div>{{ notif.note }}</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <mat-menu #menu="matMenu" (closed)="resetStates()">
+      <button
+        *ngFor="let option of menuOptions"
+        class="option-button"
+        mat-menu-item
+        [appHover]="option"
+        (click)="option.action(); sharedService.setClicked(option, true)">
+        <span class="flex-container">
+          <mat-icon
+            ><app-editable-svg
+              [fillColor]="
+                option.isHovered || option.isClicked ? primaryColor : black
+              "
+              [svgName]="option.svgName"></app-editable-svg
+          ></mat-icon>
+          <span class="caption1">{{ option.label }}</span>
+        </span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-drawer>

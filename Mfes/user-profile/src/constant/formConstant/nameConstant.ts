@@ -1,0 +1,12 @@
+export const NM_COMPANY = "companyName";
+export const NM_DESIGNATION = "designation";
+export const NM_SYEAR = "startYear";
+export const NM_SMONTH = "startMonth";
+export const NM_EYEAR = "endYear";
+export const NM_EMONTH = "endMonth";
+export const NM_COUNTRY = "country";
+export const NM_STATE = "state";
+export const NM_LOCATION = "locationType";
+export const NM_ETYPE = "employeeType";
+export const NM_SKILLS = "skills";
+export const NM_EXP_SUMMARY = "experienceSummary";

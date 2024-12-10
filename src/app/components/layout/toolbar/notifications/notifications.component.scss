@@ -1,0 +1,70 @@
+.example-sidenav {
+  padding: 20px;
+  position: fixed;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.divider {
+  height: 26px;
+  border: 1px;
+  margin-right: 5px;
+}
+.right-end-icon {
+  display: flex;
+  align-items: center;
+}
+.right-buttons {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.spacer {
+  flex: 1;
+}
+.content {
+  margin: 20px 0px;
+}
+.notification-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.notification {
+  display: flex;
+  flex: 100%;
+  flex-direction: row;
+  margin-bottom: 5px;
+  padding: 10px 10px;
+  border-radius: 4px;
+}
+
+.notification-icon {
+  display: flex;
+  padding: 10px;
+  margin-right: 10px;
+  align-items: center;
+  border-radius: 8px;
+}
+.notification-desc {
+  flex-direction: column;
+}
+.notification-title {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 801px) {
+  mat-drawer {
+    width: 100%;
+  }
+}

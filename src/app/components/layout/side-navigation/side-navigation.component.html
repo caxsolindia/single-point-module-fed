@@ -1,0 +1,56 @@
+<mat-nav-list class="menu-top">
+  <ng-container *ngFor="let item of sideNavItems">
+    <a
+      class="option-button"
+      mat-list-item
+      [routerLink]="item.routerLink"
+      routerLinkActive="active"
+      [appHover]="item"
+      (click)="setClicked(item)"
+      [disableRipple]="true">
+      <span class="flex-container">
+        <mat-icon>
+          <img [src]="getIconPath(item)" class="img-hw" alt="notif" />
+        </mat-icon>
+        <span
+          class="flex-item"
+          [style.color]="
+            item.isHovered || sharedService.isActive(item.routerLink)
+              ? primaryColor
+              : black
+          "
+          *ngIf="!isCollapsed">
+          {{ item.label }}
+        </span>
+      </span>
+    </a>
+  </ng-container>
+  <div class="bottom-items">
+    <ng-container *ngFor="let item of bottomItems">
+      <a
+        class="option-button"
+        mat-list-item
+        [routerLink]="item.routerLink"
+        routerLinkActive="active"
+        [appHover]="item"
+        (click)="setClicked(item); setAction(item)"
+        [disableRipple]="true">
+        <span class="flex-container">
+          <mat-icon>
+            <img [src]="getIconPath(item)" class="img-hw" alt="notif" />
+          </mat-icon>
+          <span
+            class="flex-item"
+            [style.color]="
+              item.isHovered || sharedService.isActive(item.routerLink)
+                ? primaryColor
+                : black
+            "
+            *ngIf="!isCollapsed">
+            {{ item.label }}
+          </span>
+        </span>
+      </a>
+    </ng-container>
+  </div>
+</mat-nav-list>

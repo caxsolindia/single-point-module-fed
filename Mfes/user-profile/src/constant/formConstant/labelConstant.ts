@@ -1,0 +1,15 @@
+export const COMAPANY_NAME = "Company Name*";
+export const COUNTRY = "Country*";
+export const CURRENTLY_ACTIVE = "I am currently working on this role";
+export const DESIGNATION = "Designation*";
+export const EMPLOYEEMENT_TYPE = "Employment Type*";
+export const END_DATE = "End Date*";
+export const JOB_SUMMARY = "Job Summary*";
+export const LOCATION_TYPE = "Location Type*";
+export const SKILL_NAME = "Skill Name*";
+export const START_DATE = "Start Date*";
+export const STATE = "State*";
+export const MONTH = "Month";
+export const YEAR = "Year";
+export const SELECT_COUNTRY = "Select Country Here";
+export const SELECT_STATE = "Selct State Here";

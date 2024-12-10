@@ -1,0 +1,53 @@
+@media screen and (min-width: 801px) {
+  .search-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .search-container {
+    width: 100%;
+  }
+}
+
+.right-buttons {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.left-section {
+  justify-content: flex-start;
+}
+
+.right-section {
+  justify-content: flex-end;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.divider {
+  margin: 20px 0px;
+}
+
+.bold-grey {
+  color: var(--custom-gray-dark-color);
+}
+
+.input-field,
+.input-field:hover,
+.input-field:active,
+.input-field:focus {
+  width: 100%;
+  border: none;
+  padding-left: 10px;
+}

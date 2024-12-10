@@ -1,0 +1,160 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0; /* Ensure the toolbar starts from the left edge of the screen */
+  right: 0; /* Ensure the toolbar ends at the right edge of the screen */
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section,
+.middle-section,
+.right-end-icon {
+  display: flex;
+  align-items: center;
+}
+
+.middle-section {
+  flex: 1;
+  justify-content: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.right-end-icon {
+  justify-content: flex-end;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  padding-left: 6.6rem;
+  width: 18.75rem;
+  box-sizing: content-box;
+}
+
+.search input[type='text'] {
+  transition: width 0.3s ease;
+  height: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--custom-gray-main-color);
+  outline: none;
+  padding: 6px 10px 5px 30px;
+}
+
+.search {
+  position: relative;
+  padding-bottom: 0px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: var(--custom-gray-main-color);
+  cursor: pointer;
+}
+
+.search-icon.material-icons {
+  font-size: 21px;
+  width: 15px;
+}
+
+::placeholder {
+  color: var(--custom-gray-main-color);
+  padding-left: 5px;
+}
+
+@media screen and (min-width: 801px) {
+  .sm-menu-icon {
+    display: none;
+  }
+  .lg-menu-icon {
+    display: inline-flex;
+  }
+
+  .middle-section {
+    justify-content: flex-start;
+    flex: 0;
+    margin-left: 1rem;
+  }
+
+  .right-end-icon {
+    order: 3;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .sm-menu-icon {
+    display: inline-flex;
+  }
+  .lg-menu-icon {
+    display: none;
+  }
+
+  .middle-section {
+    flex: 1;
+    justify-content: center;
+  }
+}
+
+.custom-hover-button {
+  cursor: pointer;
+  &:hover,
+  &.active,
+  &:active {
+    background-color: var(
+      --custom-secondary-main-color
+    ); // Change the background color to white on hover and active
+  }
+}
+
+.example-card {
+  top: 9px;
+  padding: 16px;
+  box-shadow: var(
+    --mdc-dialog-container-elevation,
+    0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0px 9px 46px 8px rgba(0, 0, 0, 0.12)
+  );
+  height: 147px;
+  width: 466.9px;
+  overflow-y: auto;
+  right: -14px;
+}
+
+.example-card::-webkit-scrollbar {
+  width: 10px; /* Adjust scrollbar width */
+}
+
+.example-card::-webkit-scrollbar-thumb {
+  background: #bbbaba; /* Set the scrollbar thumb color */
+  border-radius: 5px; /* Optional: Make the scrollbar thumb rounded */
+}
+
+.item-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+  gap: 16px;
+  text-align: center;
+}
+
+.item {
+  padding: 8px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+@media (max-width: 800px) {
+  .item-container,
+  .example-card {
+    display: none;
+  }
+}

@@ -1,0 +1,128 @@
+@use '@angular/material' as mat;
+@import './theme.scss';
+
+body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+.headline1 {
+  @include mat.typography-level($custom-typography, headline-1);
+}
+
+.headline2 {
+  @include mat.typography-level($custom-typography, headline-2);
+}
+
+.headline3 {
+  @include mat.typography-level($custom-typography, headline-3);
+}
+
+.headline4 {
+  @include mat.typography-level($custom-typography, headline-4);
+}
+
+.headline5 {
+  @include mat.typography-level($custom-typography, headline-5);
+}
+
+.headline6 {
+  @include mat.typography-level($custom-typography, headline-6);
+}
+
+.subtitle1 {
+  @include mat.typography-level($custom-typography, subtitle-1);
+}
+
+.subtitle2 {
+  @include mat.typography-level($custom-typography, subtitle-2);
+}
+
+.body1 {
+  @include mat.typography-level($custom-typography, body-1);
+}
+
+.body2 {
+  @include mat.typography-level($custom-typography, body-2);
+}
+
+.button {
+  @include mat.typography-level($custom-typography, button);
+}
+
+.caption1 {
+  @include mat.typography-level($custom-typography, caption);
+}
+
+.overline1 {
+  @include mat.typography-level($custom-typography, overline-1);
+}
+
+.list .mat-list-item:hover,
+.mat-nav-list .mat-list-item:focus,
+.mat-action-list .mat-list-item:hover,
+.mat-action-list .mat-list-item:focus {
+  background: none;
+}
+
+.mdc-list-item:hover::before {
+  background-color: transparent !important;
+}
+
+.slide-in-dialog {
+  display: block;
+  max-width: none;
+  pointer-events: auto;
+  opacity: 1;
+  transform: none;
+}
+
+.slide-in-dialog .mat-dialog-container {
+  display: block;
+  animation: slideInFromRight 0.5s ease-out;
+}
+
+:root {
+  --custom-primary-main-color: #{$custom-primary-main-color};
+  --custom-primary-lighter-color: #{$custom-primary-lighter-color};
+  --custom-primary-lightest-color: #{$custom-primary-lightest-color};
+  --custom-secondary-main-color: #{$custom-secondary-main-color};
+  --major-label-colour: #{$major-black};
+  --custom-gray-main-color: #{$custom-gray-main-color};
+  --custom-gray-dark-color: #{$custom-gray-dark-color};
+}
+
+.primary-colour {
+  color: $custom-primary-main-color !important;
+}
+.secondary-colour {
+  color: $custom-secondary-main-color !important;
+}
+.bg-lighter-primary-colour {
+  background-color: $custom-primary-lighter-color !important;
+}
+.bg-light-primary-colour {
+  background-color: $custom-primary-lightest-color !important;
+}
+.bg-secondary-colour {
+  background-color: $custom-secondary-main-color !important;
+}
+.bg-primary-colour {
+  background-color: $custom-primary-main-color !important;
+}
+.major-label-colour {
+  color: $major-black !important;
+}
+.minor-label-colour {
+  color: $minor-black !important;
+}
+
+.option-button {
+  color: var(--major-label-colour);
+}
+
+.option-button:hover,
+.option-button.mat-button-focus,
+.option-button:active {
+  color: var(--custom-primary-main-color);
+}

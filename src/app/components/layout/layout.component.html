@@ -1,0 +1,38 @@
+<app-toolbar
+  [isCollapsed]="isCollapsed"
+  [isMobile]="isMobile"
+  [sidenav]="sidenav"></app-toolbar>
+<mat-sidenav-container autosize="true">
+  <mat-sidenav
+    [ngClass]="!isCollapsed ? 'expanded' : ''"
+    [mode]="isMobile ? 'over' : 'side'"
+    [opened]="isMobile ? 'false' : 'true'">
+    <!-- It is inline style because any other ways were not applicable -->
+    <div class="lg-menu-icon menu-arrow">
+      <div class="arrow-button">
+        <!-- button show on lg screen -->
+        <button
+          mat-icon-button
+          aria-label="Arrow icon"
+          class="lg-menu-icon"
+          (click)="toggleMenu()">
+          <mat-icon *ngIf="isCollapsed"
+            ><img src="../../../assets/images/collapsed.svg" alt=""
+          /></mat-icon>
+          <mat-icon *ngIf="!isCollapsed"
+            ><img src="../../../assets/images/not-collapsed.svg" alt=""
+          /></mat-icon>
+        </button>
+      </div>
+    </div>
+    <app-side-navigation
+      [isCollapsed]="isCollapsed"
+      [isMobile]="isMobile"></app-side-navigation>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="vertical-scroll">
+      <router-outlet></router-outlet>
+      <app-assistant-parcel />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
