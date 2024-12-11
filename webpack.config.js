@@ -50,12 +50,7 @@ module.exports = {
       exposes: {},
 
       // For hosts (please adjust)
-      remotes: {
-        authapp: 'authapp@http://localhost:8080/authapp/remoteEntry.js',
-        styleguide:
-          'styleguide@http://localhost:8080/styleguide/remoteEntry.js',
-        user_profile: 'user_profile@http://localhost:8080/profilepage/remoteEntry.js'
-      },
+      remotes: {},
 
       shared: share({
         '@angular/core': {

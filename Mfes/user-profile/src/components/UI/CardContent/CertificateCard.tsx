@@ -123,8 +123,8 @@ function CertificationsComponent({
   );
 
   const certificationsToRender = isExpanded
-    ? certificateData ?? [] // Provide an empty array if certificateData is undefined
-    : certificateData?.slice(0, 1) ?? [];
+    ? (certificateData ?? []) // Provide an empty array if certificateData is undefined
+    : (certificateData?.slice(0, 1) ?? []);
 
   const handleOpenCertificateDrawer = (
     id: string,

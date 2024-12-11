@@ -4,7 +4,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const {
   DEV_PORT_URL,
-  PORT,
   MODUL_FED_NAME,
   DEV_REMOTES,
   SHARED_DEPEDENCIES,
@@ -16,14 +15,13 @@ const deps = require("../package.json").dependencies;
 module.exports = {
   mode: "development",
   output: {
-    publicPath: "http://localhost:8080/styleguide/",
+    publicPath: DEV_PORT_URL,
     scriptType: "text/javascript",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
   devServer: {
-    // port: PORT,
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -41,7 +39,7 @@ module.exports = {
   plugins: [
     new ESLintPlugin(),
     new ModuleFederationPlugin({
-      name: "styleguide",
+      name: MODUL_FED_NAME,
       filename: "remoteEntry.js",
       exposes: {
         "./ThemeConstants": path.resolve(

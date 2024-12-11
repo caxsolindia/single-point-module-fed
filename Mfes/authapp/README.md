@@ -1,4 +1,4 @@
-# Auth-App    
+# Auth-App
 
 ### description
 

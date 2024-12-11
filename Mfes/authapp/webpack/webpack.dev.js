@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const ESLintPlugin = require("eslint-webpack-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const {
   DEV_PORT_URL,
@@ -16,19 +16,19 @@ const deps = require("../package.json").dependencies;
 module.exports = {
   mode: "development",
   output: {
-    publicPath: "http://localhost:8080/authapp/",
+    publicPath: DEV_PORT_URL,
     scriptType: "text/javascript",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
   devServer: {
-    // port: PORT,
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"  
+      "Access-Control-Allow-Headers":
+        "X-Requested-With, content-type, Authorization",
     },
     hot: true,
   },
@@ -40,7 +40,7 @@ module.exports = {
   plugins: [
     new ESLintPlugin(),
     new ModuleFederationPlugin({
-      name: "authapp",
+      name: MODUL_FED_NAME,
       filename: "remoteEntry.js",
       exposes: {
         "./authApp": path.resolve(__dirname, "..", "./src/bootstrap.tsx"),

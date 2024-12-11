@@ -34,8 +34,6 @@ export class AppComponent implements DoCheck, OnInit {
   }
 
   ngOnInit(): void {
-    console.log("this is angular");
-    
     this.token = this.authService.getToken();
     if (this.token) {
       this.authService.setisLoggedIn(true);

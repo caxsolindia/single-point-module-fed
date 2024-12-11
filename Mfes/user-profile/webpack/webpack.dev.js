@@ -1,10 +1,9 @@
 const webpack = require("webpack");
 const ESLintPlugin = require("eslint-webpack-plugin");
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const {
   DEV_PORT_URL,
-  PORT,
   MODUL_FED_NAME,
   DEV_REMOTES,
   SHARED_DEPEDENCIES,
@@ -16,14 +15,13 @@ const deps = require("../package.json").dependencies;
 module.exports = {
   mode: "development",
   output: {
-    publicPath: "http://localhost:8080/profilepage/",
+    publicPath: DEV_PORT_URL,
     scriptType: "text/javascript",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
   devServer: {
-    port: PORT,
     historyApiFallback: true,
     headers: {
       "Access-Control-Allow-Origin": "*",

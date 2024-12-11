@@ -32,9 +32,9 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, "..", "../../dist/shell/profile"),
+    path: path.resolve(__dirname, "..", "../../dist/shell/profile/"),
     filename: "[name].js",
-    publicPath: "/",
+    publicPath: "auto",
   },
   plugins: [
     new HtmlWebpackPlugin({

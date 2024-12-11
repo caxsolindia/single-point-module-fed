@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: caxqaacrpa.azurecr.io/cax_auth_app_qa
-  tag: 'latest'
+  tag: "latest"
 
 service:
   name: auth-app-qa
@@ -21,7 +21,8 @@ ingress:
       paths: []
   tls: []
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -38,4 +39,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-

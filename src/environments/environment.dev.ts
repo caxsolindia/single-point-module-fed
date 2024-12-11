@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   // authMfeUrl: 'http://4.224.104.252:8081/remoteEntry.js',
   authMfeUrl: 'http://localhost:8080/authapp/remoteEntry.js',
-  authRemoteName: 'authApp',
+  authRemoteName: 'authapp',
   authExpModule: './authApp',
   reactLandingUrl: 'http://4.188.109.166:8086/remoteEntry.js',
   reactRemoteName: 'landing',
@@ -18,7 +18,7 @@ export const environment = {
   assistantParcelUrl: 'http://20.235.192.190:8087/remoteEntry.js',
   assistantParcelRemoteName: 'assistantParcel',
   assistantParcelExpoModule: './assistantParcel',
-  userProfileUrl: 'http://localhost:8080/profilepage/remoteEntry.js',
+  userProfileUrl: 'http://localhost:8080/profile/remoteEntry.js',
   userProfileRemoteName: 'user_profile',
   userProfileExpoModule: './user_profile',
 };
