@@ -109,7 +109,7 @@
           "defaultConfiguration": "development",
           "options": {
             "port": 8000,
-            "publicHost": "http://localhost:8000",
+            "publicHost": "http://4.188.95.143:8000",
             "extraWebpackConfig": "webpack.config.js"
           }
         },

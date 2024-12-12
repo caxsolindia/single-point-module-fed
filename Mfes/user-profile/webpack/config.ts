@@ -1,10 +1,10 @@
 module.exports = {
-  DEV_PORT_URL: "http://localhost:8000/profile/",
+  DEV_PORT_URL: "http://4.188.95.143:8000/profile/",
   MODUL_FED_NAME: "user_profile",
 
   // Add remotes app url for the local development mode
   DEV_REMOTES: {
-    styleguide: "styleguide@http://localhost:8000/styleguide/remoteEntry.js",
+    styleguide: "styleguide@http://4.188.95.143:8000/styleguide/remoteEntry.js",
     services: "services@http://4.213.45.71:8084/remoteEntry.js",
   },
 

@@ -39,7 +39,7 @@ describe("PrivateRoutes component", () => {
             <Route path="/protected" element={<div>Protected Page</div>} />
           </Route>
           <Route
-            path="http://localhost:8000/auth"
+            path="http://4.188.95.143:8000/auth"
             element={<div>Login Page</div>}
           />
         </Routes>

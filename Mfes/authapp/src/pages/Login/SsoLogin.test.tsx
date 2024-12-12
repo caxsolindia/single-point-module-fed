@@ -82,7 +82,7 @@ describe("SsoLogin", () => {
         profilephoto: "photo.jpg",
       }),
     );
-    expect(window.location.href).toBe("https://localhost:8000/profile");
+    expect(window.location.href).toBe("https://4.188.95.143:8000/profile");
   });
 
   it("should show error toast if accessToken is not present", () => {

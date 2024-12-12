@@ -6,7 +6,7 @@ function PrivateRoutes() {
   return token ? (
     <Outlet />
   ) : (
-    <Navigate to="http://localhost:8000/auth" replace />
+    <Navigate to="http://4.188.95.143:8000/auth" replace />
   );
 }
 export default PrivateRoutes;
