@@ -1,10 +1,10 @@
 module.exports = {
-  DEV_PORT_URL: "http://localhost:8080/authapp/",
+  DEV_PORT_URL: "http://localhost:8000/authapp/",
   MODUL_FED_NAME: "authapp",
 
   // Add remotes app url for the local development mode
   DEV_REMOTES: {
-    styleguide: "styleguide@http://localhost:8080/styleguide/remoteEntry.js",
+    styleguide: "styleguide@http://localhost:8000/styleguide/remoteEntry.js",
   },
 
   // Add remotes app url for the production mode

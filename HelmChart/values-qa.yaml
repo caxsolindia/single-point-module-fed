@@ -11,7 +11,7 @@ image:
 service:
   name: shell-app-qa
   type: ClusterIP
-  port: 8080
+  port: 8000
 
 ingress:
   enabled: false

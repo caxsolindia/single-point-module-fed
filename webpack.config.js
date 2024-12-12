@@ -15,7 +15,7 @@ sharedMappings.register(path.join(__dirname, 'tsconfig.json'), [
 module.exports = {
   output: {
     uniqueName: 'shell',
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:8000/',
     scriptType: 'text/javascript',
   },
   resolve: {

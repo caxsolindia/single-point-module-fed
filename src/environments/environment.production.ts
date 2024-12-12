@@ -1,7 +1,7 @@
 export const environment = {
   name: 'production',
-  port: 8080,
-  base_url: 'https://localhost:8080',
+  port: 8000,
+  base_url: 'https://localhost:8000',
   production: true,
   authMfeUrl: 'http://localhost:8081/remoteEntry.js',
   authRemoteName: 'authApp',
