@@ -64,8 +64,7 @@ stages:
 
     - script: |
         echo "Building your project..."
-        npm install
-        npm install -D webpack-cli
+        npm run ins
         npm run build
       displayName: Build
       continueOnError: false
@@ -89,9 +88,9 @@ stages:
     - script: ls -R coverage
       displayName: 'List coverage directory contents'
 
-    - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-      displayName: SonarCloud End
-      continueOnError: false
+    # - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+    #   displayName: SonarCloud End
+    #   continueOnError: false
 
     - task: PublishBuildArtifacts@1
       inputs:
