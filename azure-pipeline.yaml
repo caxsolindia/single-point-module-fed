@@ -64,7 +64,7 @@ stages:
 
           - script: |
               echo "Building your project..."
-              npm install
+              npm run ins
               npm run build
               npm run serve
             displayName: Build
