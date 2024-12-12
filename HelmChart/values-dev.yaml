@@ -5,11 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: caxdevacrpa0.azurecr.io/cax_shell_app_poc
+  repository: caxdevacrpa0.azurecr.io/cax_shell_app_dev
   tag: 'latest' # Use the latest build ID as the tag
 
 service:
-  name: shell-app-poc
+  name: shell-app-dev
   type: ClusterIP
   port: 8000
 
