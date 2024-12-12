@@ -13,7 +13,7 @@ pr:
       - 'master'
 
 variables:
-  serviceName: shell-application
+  serviceName: shell-app-poc
 
 pool:
   name: Azure Pipelines
