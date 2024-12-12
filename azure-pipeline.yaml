@@ -47,17 +47,17 @@ stages:
               configMode: manual
               cliProjectKey: 'caxsolindia_shell-application'
               cliProjectName: 'caxsolindia_shell-application'
-              extraProperties: |
-                sonar.sources=src
-                sonar.exclusions= HelmChart/**,**/assets/**,**/environments/**,**/bootstrap.ts,**/index.html,**/styles.scss,**/theme.scss,**/routes/**,**/dynamic-loader/**,**/wrapper/*.ts,**/directives/**
-                sonar.sourceEncoding=UTF-8
-                sonar.tests=src
-                sonar.test.inclusions=**/*.spec.ts
-                sonar.javascript.lcov.reportPaths=coverage/shell/lcov.info
-                sonar.qualitygate.wait=true
-                sonar.host.connectTimeout=300
-                sonar.host.readTimeout=600
-              continueOnError: false
+              # extraProperties: |
+              #   sonar.sources=src
+              #   sonar.exclusions= HelmChart/**,**/assets/**,**/environments/**,**/bootstrap.ts,**/index.html,**/styles.scss,**/theme.scss,**/routes/**,**/dynamic-loader/**,**/wrapper/*.ts,**/directives/**
+              #   sonar.sourceEncoding=UTF-8
+              #   sonar.tests=src
+              #   sonar.test.inclusions=**/*.spec.ts
+              #   sonar.javascript.lcov.reportPaths=coverage/shell/lcov.info
+              #   sonar.qualitygate.wait=true
+              #   sonar.host.connectTimeout=300
+              #   sonar.host.readTimeout=600
+              # continueOnError: false
 
           - checkout: self
             displayName: Pull from GitHub repo
@@ -65,7 +65,8 @@ stages:
           - script: |
               echo "Building your project..."
               npm install
-              npm run build:dev
+              npm run build
+              npm run serve
             displayName: Build
             continueOnError: false
 

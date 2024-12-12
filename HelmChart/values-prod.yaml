@@ -12,7 +12,7 @@ image:
 service:
   name: shell-app-prod
   type: ClusterIP
-  port: 8080
+  port: 8000
 
 ingress:
   enabled: false

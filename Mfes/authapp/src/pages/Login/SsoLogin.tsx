@@ -13,7 +13,7 @@ function SsoLogin() {
     updatedObject = null;
   }
   function SsoShellAppLink() {
-    window.location.href = "https://thryvo.hardikpatel.work/profile";
+    window.location.href = "https://localhost:8000/profile";
   }
   useEffect(() => {
     if (updatedObject && updatedObject?.accessToken) {

@@ -15,7 +15,7 @@
     "lint": "ng lint",
     "format": "npx prettier --write .",
     "prepare": "husky",
-    "serve": "http-server -p 8080 -c-1 -o --proxy http://localhost:8080? dist/shell"
+    "serve": "http-server -p 8000 -c-1 -o --proxy http://localhost:8000? dist/shell"
   },
   "private": true,
   "dependencies": {

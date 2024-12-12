@@ -13,7 +13,7 @@ import btmLogin from "../../assets/sssoLogin.svg";
 
 function LoginPage() {
   const handleSSO = () => {
-    window.location.href = "http://4.224.166.175/auth/azureLogin";
+    window.location.href = "http://localhost:3015/auth/azureLogin";
   };
 
   return (

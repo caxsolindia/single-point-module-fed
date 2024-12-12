@@ -15,7 +15,7 @@ sharedMappings.register(path.join(__dirname, 'tsconfig.json'), [
 module.exports = {
   output: {
     uniqueName: 'shell',
-    publicPath: 'http://localhost:8080/',
+    publicPath: 'http://localhost:8000/',
     scriptType: 'text/javascript',
   },
   resolve: {
@@ -50,12 +50,7 @@ module.exports = {
       exposes: {},
 
       // For hosts (please adjust)
-      remotes: {
-        authapp: 'authapp@http://localhost:8080/authapp/remoteEntry.js',
-        styleguide:
-          'styleguide@http://localhost:8080/styleguide/remoteEntry.js',
-        user_profile: 'user_profile@http://localhost:8080/profilepage/remoteEntry.js'
-      },
+      remotes: {},
 
       shared: share({
         '@angular/core': {

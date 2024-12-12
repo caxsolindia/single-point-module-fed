@@ -142,7 +142,7 @@ function AddSkills({ isEditMode = false }: Readonly<AddSkillsProps>) {
   // Function to prepare skill data
   const prepareSkillData = (formData: SkillData) => ({
     userId,
-    skillId: isEditMode ? filteredSkill.skillId ?? null : null,
+    skillId: isEditMode ? (filteredSkill.skillId ?? null) : null,
     skillName: formData.skillName,
     experienceInYears: formData.yearsOfExperience.toString(),
     skillCategory: formData.category,

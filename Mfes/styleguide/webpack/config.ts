@@ -1,7 +1,5 @@
 module.exports = {
-  // DEV_PORT_URL: "http://4.187.144.99:8082/",
-  // DEV_PORT_URL: "https://test.hardikpatel.work/",
-  // PORT: 8082,
+  DEV_PORT_URL: "http://localhost:8000/styleguide/",
   MODUL_FED_NAME: "styleguide",
 
   // Add remotes app url for the local development mode

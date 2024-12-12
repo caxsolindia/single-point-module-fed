@@ -82,9 +82,7 @@ describe("SsoLogin", () => {
         profilephoto: "photo.jpg",
       }),
     );
-    expect(window.location.href).toBe(
-      "https://thryvo.hardikpatel.work/profile",
-    );
+    expect(window.location.href).toBe("https://localhost:8000/profile");
   });
 
   it("should show error toast if accessToken is not present", () => {
