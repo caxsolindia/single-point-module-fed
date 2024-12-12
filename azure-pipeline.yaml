@@ -32,7 +32,7 @@ stages:
        eq(variables['Build.SourceBranch'], 'refs/heads/master'),
        eq(variables['Build.SourceBranch'], 'refs/heads/qa')
      )
-     )
+     )  
 
   jobs:
   - job: SonarCloudAnalysis
