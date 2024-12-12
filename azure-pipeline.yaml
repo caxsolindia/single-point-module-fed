@@ -67,7 +67,6 @@ stages:
               npm install
               npm install -D webpack-cli
               npm run build
-              npm run serve
             displayName: Build
             continueOnError: false
 
