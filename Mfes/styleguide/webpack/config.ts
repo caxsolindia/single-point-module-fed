@@ -1,5 +1,5 @@
 module.exports = {
-  DEV_PORT_URL: "http://localhost:8000/styleguide/",
+  DEV_PORT_URL: "http://4.188.95.143:8000/styleguide/",
   MODUL_FED_NAME: "styleguide",
 
   // Add remotes app url for the local development mode
