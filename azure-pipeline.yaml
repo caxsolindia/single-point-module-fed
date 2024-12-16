@@ -65,6 +65,10 @@ stages:
     - script: |
         echo "Building your project..."
         npm run ins
+        BASE_URL=$(BASE_URL) \
+        AUTHAPP_URL=$(AUTHAPP_URL) \
+        STYLEGUIDE_URL=$(STYLEGUIDE_URL) \
+        PROFILE_URL=$(PROFILE_URL) \
         npm run build
       displayName: Build
       continueOnError: false
