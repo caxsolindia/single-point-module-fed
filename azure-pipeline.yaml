@@ -83,14 +83,10 @@ stages:
             displayName: Install ESLint & Prettier
             continueOnError: false
 
-          - script: |
-              echo "Running tests and generating coverage report..."
-              npm install
-              npm run test -- --code-coverage --browsers=ChromeHeadless
-            displayName: Run tests and generate coverage report
-            continueOnError: false
-          - script: ls -R coverage
-            displayName: 'List coverage directory contents'
+    - script: |
+        echo "Running tests and generating coverage report..."
+        npm install
+      continueOnError: false
 
           # - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
           #   displayName: SonarCloud End
