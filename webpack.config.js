@@ -40,7 +40,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, '.env'), 
+      path: path.resolve(__dirname, '.env'),
     }),
     new webpack.DefinePlugin({
       ngDevMode: JSON.stringify(process.env.NODE_ENV !== 'production'),

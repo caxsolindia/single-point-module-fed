@@ -1,5 +1,5 @@
 const URlpath = require("path");
-require("dotenv").config({path: URlpath.resolve(__dirname, "../../../.env")});
+require("dotenv").config({ path: URlpath.resolve(__dirname, "../../../.env") });
 
 module.exports = {
   // DEV_PORT_URL: "http://4.188.95.143:8000/styleguide/",
