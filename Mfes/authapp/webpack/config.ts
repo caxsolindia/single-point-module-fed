@@ -9,7 +9,7 @@ module.exports = {
   // Add remotes app url for the local development mode
   DEV_REMOTES: {
     // styleguide: "styleguide@http://4.188.95.143:8000/styleguide/remoteEntry.js",
-    styleguide: process.env.STYLEGUIDE_REMOTE_ENTRY,
+    styleguide: `styleguide@${process.env.STYLEGUIDE_URL}remoteEntry.js`,
   },
 
   // Add remotes app url for the production mode
