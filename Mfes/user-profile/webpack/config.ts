@@ -1,10 +1,13 @@
+const URLpath = require("path");
+require("dotenv").config({ path: URLpath.resolve(__dirname, "../../../.env") });
+
 module.exports = {
   DEV_PORT_URL: process.env.PROFILE_URL,
   MODUL_FED_NAME: "user_profile",
 
   // Add remotes app url for the local development mode
   DEV_REMOTES: {
-    styleguide: `styleguide@${process.env.STYLEGUIDE_URL}remoteEntry.js`,
+    styleguide: process.env.STYLEGUIDE_REMOTE_ENTRY,
     services: "services@http://4.213.45.71:8084/remoteEntry.js",
   },
 

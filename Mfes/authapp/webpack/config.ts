@@ -3,13 +3,13 @@ require("dotenv").config({ path: URLpath.resolve(__dirname, "../../../.env") });
 
 module.exports = {
   // DEV_PORT_URL: "http://4.188.95.143:8000/authapp/",
-  DEV_PORT_URL: process.env.DEV_PORT_URL,
+  DEV_PORT_URL: process.env.AUTHAPP_URL,
   MODUL_FED_NAME: "authapp",
 
   // Add remotes app url for the local development mode
   DEV_REMOTES: {
     // styleguide: "styleguide@http://4.188.95.143:8000/styleguide/remoteEntry.js",
-    styleguide: `styleguide@${process.env.STYLEGUIDE_URL}remoteEntry.js`,
+    styleguide: process.env.STYLEGUIDE_REMOTE_ENTRY,
   },
 
   // Add remotes app url for the production mode
