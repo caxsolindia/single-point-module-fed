@@ -1,4 +1,4 @@
 <app-react-wrapper
-  [remoteEntry]="environment.authMfeUrl"
+  [remoteEntry]="environment.authMfeUrl || ' ' "
   [remoteName]="environment.authRemoteName"
   [exposedModule]="environment.authExpModule"></app-react-wrapper>

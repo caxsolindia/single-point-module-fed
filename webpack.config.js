@@ -15,7 +15,7 @@ sharedMappings.register(path.join(__dirname, 'tsconfig.json'), [
 module.exports = {
   output: {
     uniqueName: 'shell',
-    publicPath: 'http://4.188.95.143:8000/',
+    publicPath: process.env.BASE_URL,
     scriptType: 'text/javascript',
   },
   resolve: {
@@ -39,6 +39,9 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, '.env'), 
+    }),
     new webpack.DefinePlugin({
       ngDevMode: JSON.stringify(process.env.NODE_ENV !== 'production'),
     }),
