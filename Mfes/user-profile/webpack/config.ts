@@ -7,7 +7,7 @@ module.exports = {
 
   // Add remotes app url for the local development mode
   DEV_REMOTES: {
-    styleguide: `styleguide@${process.env.STYLEGUIDE_URL}remoteEntry.js`,
+    styleguide: process.env.STYLEGUIDE_REMOTE_ENTRY,
     services: "services@http://4.213.45.71:8084/remoteEntry.js",
   },
 
