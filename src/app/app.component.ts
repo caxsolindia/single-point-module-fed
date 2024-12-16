@@ -42,7 +42,7 @@ export class AppComponent implements DoCheck, OnInit {
     this.isLoggedIn = this.authService.getisLoggedIn();
 
     window.addEventListener('storage', this.storageEventListener.bind(this));
-    console.log('kai nathi aavdtu', process.env?.BASE_URL);
+
     window.addEventListener('info', (evt: Event) => {
       const customEvent = evt as CustomEvent;
       if (customEvent) {
