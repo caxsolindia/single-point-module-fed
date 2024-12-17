@@ -26,6 +26,13 @@ stages:
     dependsOn: []
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
     jobs:
+      - job: Install_Helm
+        displayName: Install Helm
+        steps:
+          - task: HelmInstaller@1
+            displayName: Install Helm
+            inputs:
+              version: latest
       - deployment: DeployToKubernetesDev
         displayName: Deploy to Kubernetes - Dev
         environment: Dev
@@ -63,6 +70,13 @@ stages:
     dependsOn: []
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/qa'))
     jobs:
+      - job: Install_Helm
+        displayName: Install Helm
+        steps:
+          - task: HelmInstaller@1
+            displayName: Install Helm
+            inputs:
+              version: latest
       - deployment: DeployToKubernetesQA
         displayName: Deploy to Kubernetes - QA
         environment: QA
@@ -100,6 +114,13 @@ stages:
     dependsOn: []
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
+      - job: Install_Helm
+        displayName: Install Helm
+        steps:
+          - task: HelmInstaller@1
+            displayName: Install Helm
+            inputs:
+              version: latest
       - deployment: DeployToKubernetesProd
         displayName: Deploy to Kubernetes - Prod
         environment: Prod
