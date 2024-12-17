@@ -3,7 +3,7 @@ require("dotenv").config({ path: URLpath.resolve(__dirname, "../../../.env") });
 
 module.exports = {
   // DEV_PORT_URL: process.env.PROFILE_URL,
-  DEV_PORT_URL : "http://4.188.95.143:8000/profile/",
+  DEV_PORT_URL: "http://4.188.95.143:8000/profile/",
   MODUL_FED_NAME: "user_profile",
 
   // Add remotes app url for the local development mode

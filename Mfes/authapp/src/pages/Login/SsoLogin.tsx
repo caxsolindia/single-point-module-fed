@@ -13,7 +13,7 @@ function SsoLogin() {
     updatedObject = null;
   }
   function SsoShellAppLink() {
-    window.location.href = "http://4.188.95.143:8000/profile";
+    window.location.href = "http://4.188.95.143:8000/";
   }
   useEffect(() => {
     if (updatedObject && updatedObject?.accessToken) {
