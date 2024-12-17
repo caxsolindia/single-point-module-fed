@@ -2,8 +2,8 @@ const URLpath = require("path");
 require("dotenv").config({ path: URLpath.resolve(__dirname, "../../../.env") });
 
 module.exports = {
-  // DEV_PORT_URL: "http://4.188.95.143:8000/authapp/",
-  DEV_PORT_URL: process.env.AUTHAPP_URL,
+  DEV_PORT_URL: "http://4.188.95.143:8000/authapp/",
+  // DEV_PORT_URL: process.env.AUTHAPP_URL,
   MODUL_FED_NAME: "authapp",
 
   // Add remotes app url for the local development mode
