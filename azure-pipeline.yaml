@@ -21,163 +21,9 @@ pool:
     - java
 
 stages:
-  - stage: CI
-    displayName: Continuous Integration
-    condition: |
-      and(
-        succeeded(),
-       or(
-         eq(variables['Build.Reason'], 'PullRequest'),
-         eq(variables['Build.SourceBranch'], 'refs/heads/develop'),
-         eq(variables['Build.SourceBranch'], 'refs/heads/master'),
-         eq(variables['Build.SourceBranch'], 'refs/heads/qa')
-       )
-       )
-
-    jobs:
-      - job: SonarCloudAnalysis11
-        displayName: Pipeline Start
-        steps:
-          - task: UseNode@1
-            displayName: 'Install Node.js 20.17.0'
-            inputs:
-              version: '20.17.0'
-
-          - script: |
-              echo "Setting npm to version 10.8.2..."
-              npm install -g npm@10.8.2
-              echo "===== VERSION CHECK ====="
-              echo "Node.js Version:"
-              node --version
-              echo "npm Version:"
-              npm --version
-              echo "=========================="
-            displayName: 'Install npm 10.8.2 and Check Versions'
-      - job: SonarCloudAnalysis
-        displayName: Pipeline Start
-        steps:
-          - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-            displayName: 'SonarCloud Begin'
-            inputs:
-              SonarCloud: 'new-service'
-              organization: caxsolindia29
-              scannerMode: CLI
-              configMode: manual
-              cliProjectKey: 'caxsolindia_shell-application'
-              cliProjectName: 'caxsolindia_shell-application'
-              extraProperties: |
-                sonar.sources=src
-                sonar.exclusions= HelmChart/**,**/assets/**,**/environments/**,**/bootstrap.ts,**/index.html,**/styles.scss,**/theme.scss,**/routes/**,**/dynamic-loader/**,**/wrapper/*.ts,**/directives/**
-                sonar.sourceEncoding=UTF-8
-                sonar.tests=src
-                sonar.test.inclusions=**/*.spec.ts
-                sonar.javascript.lcov.reportPaths=coverage/shell/lcov.info
-                sonar.qualitygate.wait=true
-                sonar.host.connectTimeout=300
-                sonar.host.readTimeout=600
-              continueOnError: false
-
-          - checkout: self
-            displayName: Pull from GitHub repo
-
-          - script: |
-              echo "Building your project..."
-              npm cache clean --force
-              npm run ins
-              BASE_URL=$(BASE_URL) \
-              AUTHAPP_URL=$(AUTHAPP_URL) \
-              STYLEGUIDE_URL=$(STYLEGUIDE_URL) \
-              PROFILE_URL=$(PROFILE_URL) \
-              STYLEGUIDE_REMOTE_ENTRY=$(STYLEGUIDE_REMOTE_ENTRY)\
-              npm run build
-            displayName: Build
-            continueOnError: false
-
-          - script: |
-              echo "Installing ESLint & Prettier..."
-              npm install eslint prettier --save-dev
-              echo "Running ESLint..."
-              npm run lint
-              echo "Running Prettier..."
-              npm run format
-            displayName: Install ESLint & Prettier
-            continueOnError: false
-
-          - script: |
-              echo "Running tests and generating coverage report..."
-              npm install
-            continueOnError: false
-
-          # - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-          #   displayName: SonarCloud End
-          #   continueOnError: false
-
-          - task: PublishBuildArtifacts@1
-            inputs:
-              pathToPublish: $(System.DefaultWorkingDirectory)/HelmChart
-              artifactName: HelmChart
-              publishLocation: Container
-
-  - stage: Build
-    displayName: Build
-    dependsOn: CI
-    condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), eq(variables['Build.SourceBranch'], 'refs/heads/qa'), eq(variables['Build.SourceBranch'], 'refs/heads/master')))
-    jobs:
-      # - job: Test
-      #   displayName: Test
-      #   steps:
-      #     - script: |
-      #         pwd
-      #         ls -al /home/vsts/work/1/s/HelmChart
-      #       displayName: Print Working Directory and List Contents
-
-      - job: Build_and_Push_Dev
-        displayName: Build and Push - Dev
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/develop')
-        steps:
-          - task: Docker@2
-            displayName: Build and Push - Dev
-            inputs:
-              containerRegistry: caxdevacrpa0
-              repository: cax_shell_app_dev
-              Dockerfile: Dockerfile
-              tags: $(Build.BuildId)
-
-      - job: Build_and_Push_QA
-        displayName: Build and Push - QA
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/qa')
-        steps:
-          - task: Docker@2
-            displayName: Build and Push - QA
-            inputs:
-              containerRegistry: caxqaacrpa0
-              repository: cax_shell_app_qa
-              Dockerfile: Dockerfile
-              tags: $(Build.BuildId)
-
-      - job: Build_and_Push_Prod
-        displayName: Build and Push - Prod
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-        steps:
-          - task: Docker@2
-            displayName: Build and Push - Prod
-            inputs:
-              containerRegistry: caxprodacrpa0
-              repository: cax_shell_app_prod
-              Dockerfile: Dockerfile
-              tags: $(Build.BuildId)
-
-      - job: Install_Helm
-        displayName: Install Helm
-        steps:
-          - task: HelmInstaller@1
-            displayName: Install Helm
-            inputs:
-              version: latest
-
   - stage: DeployToKubernetesDev
     displayName: Deploy to Kubernetes - Dev
-    dependsOn: Build
+    dependsOn: []
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
     jobs:
       - deployment: DeployToKubernetesDev
@@ -209,11 +55,12 @@ stages:
                     chartType: FilePath
                     chartPath: $(System.DefaultWorkingDirectory)/shell-app-chart
                     releaseName: pa-shell-app-dev-poc
-                    overrideValues: image.tag=$(Build.BuildId)
+                    overrideValues: image.tag=4761
                     valueFile: $(System.DefaultWorkingDirectory)/values-dev.yaml
+
   - stage: DeployToKubernetesQA
     displayName: Deploy to Kubernetes - QA
-    dependsOn: Build
+    dependsOn: []
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/qa'))
     jobs:
       - deployment: DeployToKubernetesQA
@@ -247,9 +94,10 @@ stages:
                     releaseName: pa-shell-app-qa
                     overrideValues: image.tag=$(Build.BuildId)
                     valueFile: $(System.DefaultWorkingDirectory)/values-qa.yaml
+
   - stage: DeployToKubernetesProd
     displayName: Deploy to Kubernetes - Prod
-    dependsOn: Build
+    dependsOn: []
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - deployment: DeployToKubernetesProd
