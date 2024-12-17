@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 # Copy package files and install dependencies
 COPY package*.json ./
+RUN npm cache clean --force
 RUN npm install || { echo "Base npm install failed"; exit 1; }
 
 # Copy the application files
