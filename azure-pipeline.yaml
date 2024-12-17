@@ -64,7 +64,6 @@ stages:
 
           - script: |
               echo "Building your project..."
-              npm cache clean
               npm run ins
               BASE_URL=$(BASE_URL) \
               AUTHAPP_URL=$(AUTHAPP_URL) \
