@@ -35,6 +35,24 @@ stages:
        )
 
     jobs:
+      - job: SonarCloudAnalysis11
+        displayName: Pipeline Start
+        steps:
+          - task: UseNode@1
+            displayName: 'Install Node.js 20.17.0'
+            inputs:
+              version: '20.17.0'
+
+          - script: |
+              echo "Setting npm to version 10.8.2..."
+              npm install -g npm@10.8.2
+              echo "===== VERSION CHECK ====="
+              echo "Node.js Version:"
+              node --version
+              echo "npm Version:"
+              npm --version
+              echo "=========================="
+            displayName: 'Install npm 10.8.2 and Check Versions'
       - job: SonarCloudAnalysis
         displayName: Pipeline Start
         steps:
