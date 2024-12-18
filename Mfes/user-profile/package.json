@@ -18,7 +18,6 @@
     "test:watch": "jest --watch --watchAll",
     "test:coverage": "jest --coverage",
     "serve": "serve -s build -l 8088 --single",
-    "prepare": "husky",
     "codegen": "graphql-codegen --watch --config codegen.ts "
   },
   "author": "",

@@ -66,6 +66,11 @@ stages:
               echo "Building your project..."
               npm cache clean --force
               npm run ins
+              BASE_URL=$(BASE_URL) \
+              AUTHAPP_URL=$(AUTHAPP_URL) \
+              STYLEGUIDE_URL=$(STYLEGUIDE_URL) \
+              PROFILE_URL=$(PROFILE_URL) \
+              STYLEGUIDE_REMOTE_ENTRY=$(STYLEGUIDE_REMOTE_ENTRY)\
               npm run build
             displayName: Build
             continueOnError: false
