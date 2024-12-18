@@ -65,11 +65,11 @@ stages:
           - script: |
               echo "Building your project..."
               npm run ins
-              BASE_URL=$(BASE_URL) \
-              AUTHAPP_URL=$(AUTHAPP_URL) \
-              STYLEGUIDE_URL=$(STYLEGUIDE_URL) \
-              PROFILE_URL=$(PROFILE_URL) \
-              STYLEGUIDE_REMOTE_ENTRY=$(STYLEGUIDE_REMOTE_ENTRY)\
+              export BASE_URL=$(BASE_URL)
+              export AUTHAPP_URL=$(AUTHAPP_URL)
+              export STYLEGUIDE_URL=$(STYLEGUIDE_URL)
+              export PROFILE_URL=$(PROFILE_URL)
+              export STYLEGUIDE_REMOTE_ENTRY=$(STYLEGUIDE_REMOTE_ENTRY)
               npm run build
             displayName: Build
             continueOnError: false
@@ -123,6 +123,13 @@ stages:
               repository: cax_shell_app_dev
               Dockerfile: Dockerfile
               tags: $(Build.BuildId)
+              buildContext: .
+              arguments: |
+                --build-arg BASE_URL=$(BASE_URL)
+                --build-arg AUTHAPP_URL=$(AUTHAPP_URL)
+                --build-arg STYLEGUIDE_URL=$(STYLEGUIDE_URL)
+                --build-arg PROFILE_URL=$(PROFILE_URL)
+                --build-arg STYLEGUIDE_REMOTE_ENTRY=$(STYLEGUIDE_REMOTE_ENTRY)
 
       - job: Build_and_Push_QA
         displayName: Build and Push - QA
