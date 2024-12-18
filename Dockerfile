@@ -2,6 +2,20 @@
 FROM node:20.11.0-alpine AS build
 WORKDIR /usr/src/app
 
+# Define build arguments for environment variables
+ARG BASE_URL
+ARG AUTHAPP_URL
+ARG STYLEGUIDE_URL
+ARG PROFILE_URL
+ARG STYLEGUIDE_REMOTE_ENTRY
+ 
+# Set environment variables for the build process
+ENV BASE_URL=$BASE_URL
+ENV AUTHAPP_URL=$AUTHAPP_URL
+ENV STYLEGUIDE_URL=$STYLEGUIDE_URL
+ENV PROFILE_URL=$PROFILE_URL
+ENV STYLEGUIDE_REMOTE_ENTRY=$STYLEGUIDE_REMOTE_ENTRY
+
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm ci || { echo "Base npm install failed"; exit 1; }
