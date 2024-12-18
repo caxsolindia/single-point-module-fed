@@ -64,6 +64,7 @@ stages:
 
           - script: |
               echo "Building your project..."
+              npm cache clean --force
               npm run ins
               npm run build
             displayName: Build
