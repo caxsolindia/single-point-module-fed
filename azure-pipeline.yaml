@@ -65,7 +65,6 @@ stages:
           - script: |
               echo "Building your project..."
               npm cache clean --force
-              npm install rimraf@latest glob@latest lru-cache @babel/plugin-transform-class-properties @babel/plugin-transform-object-rest-spread @eslint/config-array @eslint/object-schema --save-dev
               npm run ins
               BASE_URL=$(BASE_URL) \
               AUTHAPP_URL=$(AUTHAPP_URL) \
