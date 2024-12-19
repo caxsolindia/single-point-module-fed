@@ -1,9 +1,9 @@
 export const environment = {
   name: 'development',
   port: 8000,
-  // base_url: 'http://4.224.92.30:8080/',
+  // base_url: 'http://localhost:8080/',
   // base_url: process.env?.BASE_URL,
-  base_url: 'http://4.224.92.30:8000/',
+  base_url: 'http://localhost:8000/',
   production: false,
   // authMfeUrl: 'http://4.224.104.252:8081/remoteEntry.js',
   authMfeUrl: 'http://4.188.95.143:8000/authapp/remoteEntry.js',
