@@ -118,13 +118,6 @@ stages:
               repository: cax_shell_app_dev
               Dockerfile: Dockerfile
               tags: $(Build.BuildId)
-              buildContext: .
-              arguments: |
-                --build-arg BASE_URL=$(BASE_URL)
-                --build-arg AUTHAPP_URL=$(AUTHAPP_URL)
-                --build-arg STYLEGUIDE_URL=$(STYLEGUIDE_URL)
-                --build-arg PROFILE_URL=$(PROFILE_URL)
-                --build-arg STYLEGUIDE_REMOTE_ENTRY=$(STYLEGUIDE_REMOTE_ENTRY)
 
       - job: Build_and_Push_QA
         displayName: Build and Push - QA
